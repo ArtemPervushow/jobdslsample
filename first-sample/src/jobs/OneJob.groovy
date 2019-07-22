@@ -1,4 +1,4 @@
-folder(basePath) {
+folder('first') {
     description 'First script'
 }
 
