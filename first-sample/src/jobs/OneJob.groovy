@@ -1,0 +1,3 @@
+job {
+    echo 'Hello world'
+}
