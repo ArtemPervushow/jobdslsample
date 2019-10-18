@@ -38,7 +38,7 @@ job('my-gradle-build-dsl-folder/gradle-from-dsl-job'){
                     }
                 }
             }
-            runner('master')
+            runner('Run')
             steps {
                 batchFile('echo we are starting tests')
                 gradle {
