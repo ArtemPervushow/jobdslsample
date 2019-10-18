@@ -69,7 +69,7 @@ job('my-gradle-build-dsl-folder/gradle-from-dsl-job'){
             }
         }
         gitPublisher {
-            pushOnlyIfSuccess()
+            pushOnlyIfSuccess(true)
             branchesToPush {
                 branchToPush {
                     branchName("master")
