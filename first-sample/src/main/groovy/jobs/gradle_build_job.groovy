@@ -4,7 +4,7 @@ folder('my-gradle-build-dsl-folder'){
     description('This is folder for gradle dsl job')
 }
 
-job('gradle-from-dsl-job'){
+job('my-gradle-build-dsl-folder/gradle-from-dsl-job'){
     scm {
         git {
             remote {
