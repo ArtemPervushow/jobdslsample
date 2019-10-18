@@ -31,7 +31,7 @@ job('my-gradle-build-dsl-folder/gradle-from-dsl-job'){
         conditionalSteps {
             condition {
                 and {
-                    status('SUCCESS')
+                    status('SUCCESS','SUCCESS')
                 } {
                     and {
                         fileExists('MyMain.class', BaseDir.WORKSPACE + '/my-gradle-build-dsl-folder/gradle-from-dsl-job/first-sample/build/classes/main/')
