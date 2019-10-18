@@ -38,13 +38,44 @@ job('my-gradle-build-dsl-folder/gradle-from-dsl-job'){
                     }
                 }
             }
-            runner('Run')
+            runner('master')
             steps {
                 batchFile('echo we are starting tests')
                 gradle {
                     tasks('testClasses')
                 }
             }
+        }
+    }
+    publishers {
+        flexiblePublish{
+            conditionalAction {
+                condition {
+                    status('SUCCESS', 'SUCCESS')
+                }
+                publishers {
+                    deployPublisher {
+                        adapters {
+                            tomcat8xAdapter {
+                                credentialsId('cacc3e70-7103-4613-b74b-eaa04c825483')
+                                url("http://localhost:8082")
+                            }
+                            contextPath("build/libs/")
+                            onFailure(false)
+                            war("first-sample-1.0-SNAPSHOT.war")
+                        }
+                    }
+                }
+            }
+        }
+        gitPublisher {
+            branchesToPush {
+                branchToPush {
+                    branchName("master")
+                    targetRepoName("origin")
+                }
+            }
+            pushMerge(true)
         }
     }
 }
