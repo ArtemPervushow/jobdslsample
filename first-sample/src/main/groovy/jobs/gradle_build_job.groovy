@@ -6,12 +6,14 @@ folder('my-gradle-build-dsl-folder'){
 
 job('gradle-from-dsl-job'){
     scm {
-        remote {
-            name('origin')
-            url('https://github.com/ArtemPervushow/jobdslsample.git')
-            credentials('cacc3e70-7103-4613-b74b-eaa04c825483')
+        git {
+            remote {
+                name('origin')
+                url('https://github.com/ArtemPervushow/jobdslsample.git')
+                credentials('cacc3e70-7103-4613-b74b-eaa04c825483')
+            }
+            branch('master')
         }
-        branch('master')
     }
     logRotator {
         numToKeep(5)
