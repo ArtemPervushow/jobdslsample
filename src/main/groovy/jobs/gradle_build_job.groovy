@@ -28,5 +28,23 @@ job('my-gradle-build-dsl-folder/gradle-from-dsl-job'){
             tasks('clean')
             tasks('build')
         }
+        conditionalSteps {
+            condition {
+                and {
+                    status('SUCCESS')
+                } {
+                    and {
+                        fileExists('MyMain.class', BaseDir.WORKSPACE + '/my-gradle-build-dsl-folder/gradle-from-dsl-job/first-sample/build/classes/main/')
+                    }
+                }
+            }
+            runner('master')
+            steps {
+                batchFile('echo we are starting tests')
+                gradle {
+                    tasks('testClasses')
+                }
+            }
+        }
     }
 }
